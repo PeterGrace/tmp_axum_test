@@ -7,7 +7,7 @@ use aide::redoc::Redoc;
 use aide::scalar::Scalar;
 use aide::swagger::Swagger;
 use aide::transform::TransformOpenApi;
-use axum::{response::IntoResponse, Extension, Json};
+use axum::{response, response::IntoResponse, Extension, Json};
 use serde::{Deserialize, Serialize};
 use std::net::SocketAddr;
 use std::sync::Arc;
@@ -53,7 +53,7 @@ async fn main() {
     let app = ApiRouter::new()
         .layer(session_layer)
         .api_route("/", get(handler))
-        .nest_api_service("/docs", docs_routes)
+        .nest_api_service("/docs", docs_routes())
         .finish_api_with(&mut api, api_docs)
         .layer(Extension(Arc::new(api)));
 
