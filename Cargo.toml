@@ -1,0 +1,23 @@
+[package]
+name = "axumtest"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0.216", features = ["derive"] }
+thiserror = "2.0.6"
+tokio = { version = "1.42.0", features = ["rt-multi-thread", "macros", "time"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["fmt", "env-filter"] }
+axum = { version = "0.8.1",features = ["http2","macros"] }
+aide = { version = "0.14.0", features = ["axum-json", "macros", "scalar", "swagger", "redoc"] }
+schemars = { version = "0.8.21", features = ["derive", "uuid1"] }
+dotenv = "0.15.0"
+sqlx = { version = "0.8.2",features = ["postgres","runtime-tokio-rustls","any","chrono"] }
+tower = "0.5.2"
+tower-http = { version = "0.6.2",features = ["cors"] }
+tower-sessions = "0.14.0"
+jsonwebtoken = "9.3.1"
+async-trait = "0.1.86"
+reqwest = { version = "0.12.12",features = ["json"] }
+
